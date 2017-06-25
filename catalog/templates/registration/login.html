@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block content %}       {% if not user.is_authenticated %}
+<div class="container">
+<h1>Login</h1><br>
+<div class="login-form ">
+<div class="form-group "><div class="row">
+<form method="post" action=".?next={{ redirect_to }}" role="form" data-toggle="validator"> {% csrf_token %}
+  <div class="col-lg-3">
+
+    <input type="text" name="username" class="form-control" placeholder="Username"/><br>
+    <input type="password" name="password" class="form-control" placeholder="Password"/><br>
+    <input class="btn btn-info" type="submit" value="Login"/>
+	</div>
+  </div>
+</form>
+</div>
+</div>
+</div><br>
+<div class="container">
+<div class="col-lg-4">
+<h2>Create new account</h2>
+<a href="{% url "register" %}">click here</a>
+</div> </div>
+{% endif %}
+{% endblock %}
